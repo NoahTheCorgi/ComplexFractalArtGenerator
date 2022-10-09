@@ -14,7 +14,7 @@ public class Fractal {
     // note: top left corner is considered (0, 0)
     // ... by implementations, (0, 0) will be transposed to (x, y)
     // (note this would be a upside down cartesian plane, not a big deal for now)
-    public double x = -1.50;
+    public double x = -2.00;
     public double y = -1.50;
 
     // zoom amount
@@ -55,6 +55,9 @@ public class Fractal {
     public void plotDefault(Display d) {
         for (int i=0; i<displayWidth; i++) {
             for (int j=0; j<displayHeight; j++) {
+                // 1/xyScaleMatchFactor is the minimum unit within the grid
+                // this allows an accurate scaling between the x-axis and y-axis
+                // note: due to lack of precision (1/xyScaleMatchFactor) is not viable
                 double dx = zoomOutAmount * i / xyScaleMatchFactor;
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
                 //Complex complexInput = new Complex(x+dx, y+dy);

@@ -52,17 +52,17 @@ public class Display extends JPanel {// implements KeyListener {
         fractal.plot(this); // *** note: updateDisplay is called here by fractal
         // now that the array is updated...
         // sub class of abstract image class, could not use image class directly...
-        System.out.println("washere 1");
+        //System.out.println("washere 1");
         BufferedImage outputImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_3BYTE_BGR);
         // for creating raster (rectangular pixels)
-        System.out.println("washere 2");
+        //System.out.println("washere 2");
         DataBufferByte dbb = new DataBufferByte(displayByteData, displayByteData.length);
         Point point = new Point();
-        System.out.println("washere 3");
+        //System.out.println("washere 3");
         Raster raster = Raster.createRaster(outputImage.getSampleModel(), dbb, point);
-        System.out.println("washere 4");
+        //System.out.println("washere 4");
         outputImage.setData(raster);
-        System.out.println("washere 5");
+        //System.out.println("washere 5");
         // observer not needed for there is no expected asynchronous update
         graphics.drawImage(outputImage, 0, 0, null);
     }
