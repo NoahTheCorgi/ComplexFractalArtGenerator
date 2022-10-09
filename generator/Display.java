@@ -51,6 +51,7 @@ public class Display extends JPanel implements KeyListener {
         }
         // key R
         else if (keyCode == 82) {
+            // future task::
             // Randomization of the colors used
             // placeholder
         }
@@ -61,7 +62,45 @@ public class Display extends JPanel implements KeyListener {
     }
 
     public void explorationKeyPressed(KeyEvent e) {
-        // placeholder
+        if (shiftKeyPressed == true) {
+
+        }
+        // if shift key is not pressed...
+        else {
+            double movementAmount = 10;
+            // note: (1/getWidth) is the minimum unit horizontal (x)
+            double dx = (fractal.zoomOutAmount) * movementAmount / getWidth();
+            // note: (1/getHeight) is the minimum unit vertical (y)
+            double dy = (fractal.zoomOutAmount) * movementAmount / getHeight();
+            // A:: left movement
+            if (e.getKeyCode() == 68) {
+                // points move right so camera moves left
+                fractal.x += dx;
+            }
+            // D:: right movement
+            else if (e.getKeyCode() == 65) {
+                // points move left so camera moves right
+                fractal.x -= dx;
+            }
+            // S:: down movement
+            else if (e.getKeyCode() == 87) {
+                // since increase is downward decrement is lowering camera
+                fractal.y -= dy;
+            }
+            // W:: up movement
+            else if (e.getKeyCode() == 83) {
+                // since increase is downward increment is moving camera upwards
+                fractal.y += dy;
+            }
+            // up arrow key:: zoom in
+            else if (e.getKeyCode() == 38) {
+                fractal.zoomOutAmount *= 0.99;
+            }
+            // down arrow key:: zoom out
+            else if (e.getKeyCode() == 40) {
+                fractal.zoomOutAmount *= 1.01;
+            }
+        }
     }
 
     @Override
