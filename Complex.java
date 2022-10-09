@@ -69,9 +69,11 @@ public class Complex {
     }
 
     public double findThetaRadians() {
+        double thetaRadians = 0.0;
+        double r = Math.sqrt(real*real + imaginary*imaginary);
         // first quad
         if (real>=0 && imaginary>=0) {
-
+            thetaRadians = Math.acos(real/r);
         }
         // second quad
         else if (real<0 && imaginary>=0) {
@@ -86,6 +88,6 @@ public class Complex {
 
         }
         // this should never be reached...
-        return 0.0;
+        return thetaRadians;
     }
 }
