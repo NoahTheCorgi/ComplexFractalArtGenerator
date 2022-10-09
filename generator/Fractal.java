@@ -18,7 +18,7 @@ public class Fractal {
     public double y = -1.50;
 
     // zoom in amount
-    public double zoom = 1/3;
+    public double zoom = 1/5;
 
     public int displayWidth;
     public int displayHeight;
@@ -59,10 +59,11 @@ public class Fractal {
                 double dx = (i*minUnit)/zoom;
                 double dy = (j*minUnit)/zoom;
                 destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                //System.out.println("destablizingTime:: " + destabilizingTime);
                 // if within n precision/steps, the point destablized
                 if (destabilizingTime < n) {
                     // update the display with the plot
-                    System.out.println("destablizingTime:: " + destabilizingTime);
+                    System.out.println("wassss hereeee testing");
                     d.updateDisplay(i, j, new Color(0, 0, 200));
                 }
             }
@@ -72,17 +73,18 @@ public class Fractal {
     // there is a huge bug here...
     // maybe cuz z is being passed in by value i think...
     // need to create a reference to it...
-    public int destabilizationTestDefault(Complex z, Complex c, int n) {
+    public int destabilizationTestDefault(Complex z, Complex toAdd, int n) {
         int count = 0;
-        if (z.real*z.real + z.imaginary*z.imaginary > 4) {
-            // if already destabilized, immediate report zero
-            return n;
-        }
+        // if (z.real*z.real + z.imaginary*z.imaginary > 4) {
+        //     // if already destabilized, immediate report zero
+        //     return n;
+        // }
         while (count < n) {
             z.toThePowerOfInteger(2);
-            z.add(c);
+            z.add(toAdd);
             count += 1;
-            if (z.real*z.real + z.imaginary*z.imaginary > 4) {
+            System.out.println(z.print());
+            if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
                 System.out.println("testing:: was here!!!!!!!!!!!!!!!!!");
                 // if already destabilized, immediate report zero
                 break;

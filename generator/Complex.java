@@ -6,31 +6,31 @@ package generator;
 
 public class Complex {
 
-    // public static void main(String[] args) {
-    //     System.out.println("testing complex class");
-    //     Complex a = new Complex(1, 1);
-    //     Complex b = new Complex(1, 2);
-    //     System.out.println(a.print());
-    //     System.out.println(b.print());
-    //     a.multiply(b);
-    //     System.out.println(a.print());
-    // }
+    public static void main(String[] args) {
+        System.out.println("testing complex class");
+        Complex a = new Complex(1, 1);
+        Complex b = new Complex(1, 2);
+        System.out.println(a.print());
+        System.out.println(b.print());
+        a.toThePowerOfInteger(3);
+        System.out.println(a.print());
+    }
 
     // real and imaginary parts of a complex number
     public double real;
     public double imaginary;
 
     // basic constructors
-    public Complex() {
-        // empty arguments create a zero complex number
-        this.real = 0;
-        this.imaginary = 0;
-    }
+    // public Complex() {
+    //     // empty arguments create a zero complex number
+    //     this.real = 0;
+    //     this.imaginary = 0;
+    // }
 
     // standard constructor
     public Complex(double x, double y) {
-         this.real = x;
-         this.imaginary = y;
+        real = x;
+        imaginary = y;
     }
 
     // note that operations are done in place
