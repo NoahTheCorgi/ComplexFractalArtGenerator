@@ -14,11 +14,11 @@ public class Fractal {
     // note: top left corner is considered (0, 0)
     // ... by implementations, (0, 0) will be transposed to (x, y)
     // (note this would be a upside down cartesian plane, not a big deal for now)
-    public double x = -2;
-    public double y = -2;
+    public double x = -1.50;
+    public double y = -1.50;
 
     // zoom in amount
-    public double zoom = 3;
+    public double zoom = 1/3;
 
     public int displayWidth;
     public int displayHeight;
@@ -62,23 +62,29 @@ public class Fractal {
                 // if within n precision/steps, the point destablized
                 if (destabilizingTime < n) {
                     // update the display with the plot
-                    d.updateDisplay(i, j, new Color(255,255,255));
+                    System.out.println("destablizingTime:: " + destabilizingTime);
+                    d.updateDisplay(i, j, new Color(0, 0, 200));
                 }
             }
         }
     }
 
+    // there is a huge bug here...
+    // maybe cuz z is being passed in by value i think...
+    // need to create a reference to it...
     public int destabilizationTestDefault(Complex z, Complex c, int n) {
         int count = 0;
         if (z.real*z.real + z.imaginary*z.imaginary > 4) {
             // if already destabilized, immediate report zero
-            return 0;
+            return n;
         }
-        while (z.real*z.real + z.imaginary*z.imaginary <= 4) {
+        while (count < n) {
             z.toThePowerOfInteger(2);
             z.add(c);
             count += 1;
-            if (count >= n) {
+            if (z.real*z.real + z.imaginary*z.imaginary > 4) {
+                System.out.println("testing:: was here!!!!!!!!!!!!!!!!!");
+                // if already destabilized, immediate report zero
                 break;
             }
         }

@@ -2,8 +2,19 @@
 // discrete modeling of complex field and its arithmetics::
 
 package generator;
+//import java.io.*;
 
 public class Complex {
+
+    public static void main(String[] args) {
+        System.out.println("testing complex class");
+        Complex a = new Complex(1, 1);
+        Complex b = new Complex(1, 2);
+        System.out.println(a.print());
+        System.out.println(b.print());
+        a.multiply(b);
+        System.out.println(a.print());
+    }
 
     // real and imaginary parts of a complex number
     public double real;
@@ -93,5 +104,14 @@ public class Complex {
             thetaRadians += Math.PI;
         }
         return thetaRadians;
+    }
+
+    public String print() {
+        String output = "";
+        output += real;
+        output += "+(";
+        output += imaginary;
+        output += ")i";
+        return output;
     }
 }
