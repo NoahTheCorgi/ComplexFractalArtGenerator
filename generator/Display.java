@@ -51,6 +51,7 @@ public class Display extends JPanel {// implements KeyListener {
         DataBufferByte dbb = new DataBufferByte(displayByteData, displayByteData.length);
         Raster raster = Raster.createRaster(outputImage.getSampleModel(), dbb, new Point());
         outputImage.setData(raster);
-        graphics.drawImage(outputImage, 0, 0);
+        // observer not needed for there is no expected asynchronous update
+        graphics.drawImage(outputImage, 0, 0, null);
     }
 }
