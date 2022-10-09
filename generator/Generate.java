@@ -18,6 +18,7 @@ public class Generate extends JFrame {
         // need to add a type of JPanel ...
         // Display class extends JPanel
         Display display = new Display();
+        display.fractal = new Fractal();
         add(display);
         display.requestFocusInWindow();
     }

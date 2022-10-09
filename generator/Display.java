@@ -21,6 +21,7 @@ public class Display extends JPanel {// implements KeyListener {
     }
 
     // this updates the displayByteData array to be used by paintComponent
+    // color is just black and white for now...
     public void updateDisplay(int x, int y, Color color) {
         // if within the windows bounds...
         if ((x+y)>=0 && x<getWidth() && y<getHeight()) {
@@ -43,7 +44,7 @@ public class Display extends JPanel {// implements KeyListener {
         displayByteData = new byte[3*getWidth()*3*getHeight()];
         // the fractal will update the output accordingly first
         fractal.setDisplaySize(getWidth(), getHeight());
-        fractal.plot(this); // note: updateDisplay is called here by fractal
+        fractal.plot(this); // *** note: updateDisplay is called here by fractal
         // now that the array is updated...
         // sub class of abstract image class, could not use image class directly...
         BufferedImage outputImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_3BYTE_BGR);
