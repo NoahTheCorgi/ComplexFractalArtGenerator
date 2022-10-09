@@ -11,6 +11,10 @@ import java.awt.image.Raster;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
-public class Display extends JPanel { // implements KeyListener {
-    
+public class Display extends JPanel {// implements KeyListener {
+
+    public Display() {
+        //addKeyListener(this);
+    }
+
 }
