@@ -1,6 +1,7 @@
+package generator;
 // NoahTheCorgi
 // JFrame extension that will be compiled to executable
-package generator;
+
 import java.awt.*;
 import javax.swing.*;
 import java.io.IOException;
@@ -15,11 +16,17 @@ public class Generate extends JFrame {
         setSize(new Dimension(1000, 1000));
         setTitle("Complex Fractal Art Generator");
         // need to add a type of JPanel ...
-        // ...
+        // Display class extends JPanel
+        Display display = new Display();
+        add(display);
+        display.requestFocusInWindow();
     }
 
     // start the animated display::
     public static void main(String[] args) throws IOException {
         Generate generate = new Generate();
+        while (true) {
+            generate.repaint();
+        }
     }
 }
