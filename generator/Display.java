@@ -62,6 +62,15 @@ public class Display extends JPanel implements KeyListener {
             // Randomization of the colors used
             ColorsTheme.generateColorsTheme();
         }
+        // key T, for the toAddOption toggle::
+        else if (keyCode == 84) {
+            if (fractal.toAddOption == false) {
+                fractal.toAddOption = true;
+            } 
+            else {
+                fractal.toAddOption = false;
+            }
+        }
         // other basic exploration functionalities::
         else {
             explorationKeyPressed(e);

@@ -20,3 +20,5 @@ Key Commands for exploration:
 - Down arrow key: zoom out
 - N key + Up arrow key: increase depth precision
 - N key + Down arrow key: decrease depth precision
+- T key: Toggle betwen Fractal.toAddOption applied or not applied
+(toAddOption fixes the added component Fractal.toAddValue to the Mandelbrot Set function)

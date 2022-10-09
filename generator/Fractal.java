@@ -5,8 +5,7 @@
 // future task 1:: experiment and explore the possibility of complex/imaginary exponents
 // (the complex exponent function was individually tested, and there was no issue, 
 // ... but the time complexity does not allow an efficient computation at the moment...)
-// future task 2:: create flexibility or dynamically adjusting or even fixing toAdd value
-// future task 3:: terminal based user input update capability
+// future task 2:: terminal based user input update capability
 
 package generator;
 
@@ -37,6 +36,8 @@ public class Fractal {
 
     // adjust for exploration and experimentation::
     public int exponent = 2;
+    public boolean toAddOption = false;
+    public Complex toAddValue = new Complex(0.5, 0.5);
     // public Complex imaginaryExponent = new Complex(0, 1);
 
     public void setDisplaySize(int width, int height) {
@@ -76,7 +77,12 @@ public class Fractal {
                 double dx = zoomOutAmount * i / xyScaleMatchFactor;
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
                 //Complex complexInput = new Complex(x+dx, y+dy);
-                destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                if (toAddOption == false) {
+                    destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                }
+                else {
+                    destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), toAddValue, n);
+                }
                 //System.out.println("destablizingTime:: " + destabilizingTime);
                 // if within n precision/steps, the point destablized
                 //d.updateDisplay(i, j, new Color(100, 100, 100));
@@ -121,7 +127,12 @@ public class Fractal {
             for (int j=0; j<displayHeight; j++) {
                 double dx = zoomOutAmount * i / xyScaleMatchFactor;
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
-                destabilizingTime = destabilizationTestPr1(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                if (toAddOption == false) {
+                    destabilizingTime = destabilizationTestPr1(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                }
+                else {
+                    destabilizingTime = destabilizationTestPr1(new Complex(x+dx, y+dy), toAddValue, n);
+                }
                 if (destabilizingTime < n) {
                     d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
                 }
@@ -150,7 +161,12 @@ public class Fractal {
             for (int j=0; j<displayHeight; j++) {
                 double dx = zoomOutAmount * i / xyScaleMatchFactor;
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
-                destabilizingTime = destabilizationTestPr2(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                if (toAddOption == false) {
+                    destabilizingTime = destabilizationTestPr2(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                }
+                else {
+                    destabilizingTime = destabilizationTestPr2(new Complex(x+dx, y+dy), toAddValue, n);
+                }
                 if (destabilizingTime < n) {
                     d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
                 }
