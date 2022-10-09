@@ -24,7 +24,7 @@ public class Fractal {
     public double minUnit;
 
     // how fast a point in question destabilizes...
-    public static int destabilizingSpeed;
+    public static int destabilizingTime;
 
     // precision for complex field data points
     public int n = 100;
@@ -53,9 +53,36 @@ public class Fractal {
     }
 
     public void plotDefault(Display d) {
-
+        for (int i=0; i<displayWidth; i++) {
+            for (int j=0; j<displayHeight; j++) {
+                double dx = (i*minUnit)/zoom;
+                double dy = (j*minUnit)/zoom;
+                destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                // if within n precision/steps, the point destablized
+                if (destabilizingTime < n) {
+                    // update the display with the plot
+                }
+            }
+        }
     }
-    
+
+    public int destabilizationTestDefault(Complex z, Complex c, int n) {
+        int count = 0;
+        if (z.real*z.real + z.imaginary*z.imaginary > 4) {
+            // if already destabilized, immediate report zero
+            return 0;
+        }
+        while (z.real*z.real + z.imaginary*z.imaginary <= 4) {
+            z.toThePowerOfInteger(2);
+            z.add(c);
+            count += 1;
+            if (count >= n) {
+                break;
+            }
+        }
+        return count;
+    }
+
     public void plotProbabilisticType1(Display d) {
 
     }
