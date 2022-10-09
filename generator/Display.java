@@ -14,7 +14,7 @@ public class Display extends JPanel implements KeyListener {
 
     public Fractal fractal;
     protected byte[] displayByteData;
-    protected boolean shiftKeyPressed = false;
+    protected boolean nKeyPressed = false;
 
     public Display() {
         addKeyListener(this);
@@ -30,9 +30,9 @@ public class Display extends JPanel implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         System.out.println("the key code, " + keyCode + ", was Pressed...");
-        // shift
-        if (keyCode == 16) {
-            shiftKeyPressed = true;
+        // the N key, which controls the depth precision in combination with up and down arrow keys
+        if (keyCode == 78) {
+            nKeyPressed = true;
         }
         // // key I
         // else if (keyCode == 73) {
@@ -69,42 +69,52 @@ public class Display extends JPanel implements KeyListener {
     }
 
     public void explorationKeyPressed(KeyEvent e) {
-        if (shiftKeyPressed == true) {
-            // placeholder
+        double movementAmount = 20;
+        // note: (1/getWidth) is the minimum unit horizontal (x)
+        double dx = (fractal.zoomOutAmount) * movementAmount / getWidth();
+        // note: (1/getHeight) is the minimum unit vertical (y)
+        double dy = (fractal.zoomOutAmount) * movementAmount / getHeight();
+        // A:: left movement
+        if (e.getKeyCode() == 68) {
+            // points move right so camera moves left
+            fractal.x += dx;
         }
-        // if shift key is not pressed...
-        else {
-            double movementAmount = 10;
-            // note: (1/getWidth) is the minimum unit horizontal (x)
-            double dx = (fractal.zoomOutAmount) * movementAmount / getWidth();
-            // note: (1/getHeight) is the minimum unit vertical (y)
-            double dy = (fractal.zoomOutAmount) * movementAmount / getHeight();
-            // A:: left movement
-            if (e.getKeyCode() == 68) {
-                // points move right so camera moves left
-                fractal.x += dx;
+        // D:: right movement
+        else if (e.getKeyCode() == 65) {
+            // points move left so camera moves right
+            fractal.x -= dx;
+        }
+        // S:: down movement
+        else if (e.getKeyCode() == 87) {
+            // since increase is downward decrement is lowering camera
+            fractal.y -= dy;
+        }
+        // W:: up movement
+        else if (e.getKeyCode() == 83) {
+            // since increase is downward increment is moving camera upwards
+            fractal.y += dy;
+        }
+        // up arrow key:: zoom in or increase precision Fractal.n
+        else if (e.getKeyCode() == 38) {
+            if (nKeyPressed == true) {
+                // the n key is mainly for adjusting Fractal.n, which is the depth precision for destabilization tests
+                // since up arrow key is pressed...
+                fractal.n += 5;
             }
-            // D:: right movement
-            else if (e.getKeyCode() == 65) {
-                // points move left so camera moves right
-                fractal.x -= dx;
-            }
-            // S:: down movement
-            else if (e.getKeyCode() == 87) {
-                // since increase is downward decrement is lowering camera
-                fractal.y -= dy;
-            }
-            // W:: up movement
-            else if (e.getKeyCode() == 83) {
-                // since increase is downward increment is moving camera upwards
-                fractal.y += dy;
-            }
-            // up arrow key:: zoom in
-            else if (e.getKeyCode() == 38) {
+            else {
                 fractal.zoomOutAmount *= 0.99;
             }
-            // down arrow key:: zoom out
-            else if (e.getKeyCode() == 40) {
+        }
+        // down arrow key:: zoom out or decrease precision Fractal.n
+        else if (e.getKeyCode() == 40) {
+            if (nKeyPressed == true) {
+                // the n key is mainly for adjusting Fractal.n, which is the depth precision for destabilization tests
+                // since down arrow key is pressed...
+                if (fractal.n - 5 > 0) {
+                    fractal.n -= 5;
+                }
+            }
+            else {
                 fractal.zoomOutAmount *= 1.01;
             }
         }
@@ -112,8 +122,9 @@ public class Display extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == 16) {
-            shiftKeyPressed = false;
+        // the N key, which controls the depth precision in combination with up and down arrow keys
+        if (e.getKeyCode() == 78) {
+            nKeyPressed = false;
         }
     }
 

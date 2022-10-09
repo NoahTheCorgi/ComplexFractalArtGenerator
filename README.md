@@ -13,8 +13,10 @@ To run the generator after compiling
 
 Key Commands for exploration:
 - WASD keys: move camera
-- R: randomize color theme
-- O: Ordinary/Default non-probabilistic art
-- P: Toggle between Probabilistic Art styles
+- R key: randomize color theme
+- O key: Ordinary/Default non-probabilistic art
+- P key: Toggle between Probabilistic Art styles
 - Up arrow key: zoom in
 - Down arrow key: zoom out
+- N key + Up arrow key: increase depth precision
+- N key + Down arrow key: decrease depth precision
