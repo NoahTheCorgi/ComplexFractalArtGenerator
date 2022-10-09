@@ -37,6 +37,14 @@ public class Display extends JPanel {// implements KeyListener {
 
     @Override
     public void paintComponent(Graphics graphics) {
-        // placeholder
+        super.paintComponent(graphics);
+        // 3 for each cuz bgr
+        displayByteData = new byte[3*getWidth()*3*getHeight()];
+        // the fractal will update the output accordingly first
+        fractal.setDisplaySize(getWidth(), getHeight());
+        fractal.plot(this); // note: updateDisplay is called here by fractal
+        // now that the array is updated...
+        BufferedImage outputImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+        
     }
 }
