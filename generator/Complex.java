@@ -48,9 +48,11 @@ public class Complex {
         imaginary = imaginary - z.imaginary;
     }
 
+    // (FIXED) the bug was here, needed to save previous data
     public void multiply(Complex z) {
+        double realCopy = real;
         real = real*z.real - imaginary*z.imaginary;
-        imaginary = z.imaginary*real + z.real*imaginary;
+        imaginary = z.imaginary*realCopy + z.real*imaginary;
     }
 
     public void divide(Complex z) {
