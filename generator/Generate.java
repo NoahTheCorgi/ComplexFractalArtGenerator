@@ -17,7 +17,7 @@ public class Generate extends JFrame {
         setTitle("Complex Fractal Art Generator");
         // need to add a type of JPanel ...
         // Display class extends JPanel
-        JPanel display = new JPanel();
+        Display display = new Display();
         add(display);
         display.requestFocusInWindow();
     }
