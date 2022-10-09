@@ -4,6 +4,7 @@ package generator;
 
 import java.awt.*;
 import javax.swing.*;
+
 import java.io.IOException;
 import java.io.*; // for user interaction through terminal
 
@@ -26,6 +27,10 @@ public class Generate extends JFrame {
     // start the animated display::
     public static void main(String[] args) throws IOException {
         Generate generate = new Generate();
+        ColorsTheme.generateColorsTheme();
+        for (int i=0; i<ColorsTheme.COLOR_DETAIL_SIZE; i++) {
+            System.out.println(ColorsTheme.THEME_COLORS[i]);
+        }
         while (true) {
             generate.repaint();
         }

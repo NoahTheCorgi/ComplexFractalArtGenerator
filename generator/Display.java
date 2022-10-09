@@ -4,7 +4,6 @@ package generator;
 
 // probabily will be needing all of this (may not java.io.*)
 import java.io.*;
-import java.util.concurrent.ConcurrentHashMap.KeySetView;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -53,7 +52,7 @@ public class Display extends JPanel implements KeyListener {
         else if (keyCode == 82) {
             // future task::
             // Randomization of the colors used
-            // placeholder
+            ColorsTheme.generateColorsTheme();
         }
         // other basic exploration functionalities::
         else {

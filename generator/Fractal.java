@@ -14,7 +14,7 @@ public class Fractal {
     // note: top left corner is considered (0, 0)
     // ... by implementations, (0, 0) will be transposed to (x, y)
     // (note this would be a upside down cartesian plane, not a big deal for now)
-    public double x = -2.00;
+    public double x = -2.05;
     public double y = -1.50;
 
     // zoom amount
@@ -66,9 +66,12 @@ public class Fractal {
                 //System.out.println("destablizingTime:: " + destabilizingTime);
                 // if within n precision/steps, the point destablized
                 //d.updateDisplay(i, j, new Color(100, 100, 100));
-                if (destabilizingTime < n) {
+                if (destabilizingTime < 100) {
                     // update the display with the plot
-                    d.updateDisplay(i, j, new Color(100, 100, 100));
+                    
+                    //d.updateDisplay(i, j, new Color(100, 100, 100));
+                    //System.out.println("destablizingTime:: " + destabilizingTime);
+                    d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
                 }
             }
         }
@@ -106,7 +109,7 @@ public class Fractal {
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
                 destabilizingTime = destabilizationTestPr1(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
                 if (destabilizingTime < n) {
-                    d.updateDisplay(i, j, new Color(100, 100, 100));
+                    d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
                 }
             }
         }
@@ -135,7 +138,7 @@ public class Fractal {
                 double dy = zoomOutAmount * j / xyScaleMatchFactor;
                 destabilizingTime = destabilizationTestPr2(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
                 if (destabilizingTime < n) {
-                    d.updateDisplay(i, j, new Color(100, 100, 100));
+                    d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
                 }
             }
         }
