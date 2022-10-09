@@ -11,6 +11,7 @@ public class Fractal {
     // x and y refer to the coordinate representation of the top left corner
     // note: top left corner is considered (0, 0)
     // ... by implementations, (0, 0) will be transposed to (x, y)
+    // (note this would be a upside down cartesian plane, not a big deal for now)
     public double x = -2;
     public double y = -2;
 
@@ -21,6 +22,7 @@ public class Fractal {
     public int displayHeight;
     public double minUnit;
 
+    // how fast a point in question destabilizes...
     public static int destabilizingSpeed;
 
     // precision for complex field data points
