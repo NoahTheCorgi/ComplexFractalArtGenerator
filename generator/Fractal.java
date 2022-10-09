@@ -1,5 +1,6 @@
 // NoahTheCorgi
-// Fractal Object that will be interpreted and displayed by Display.java
+// Fractal Object that represents the fractal to be displayed
+// ... also containing methods to update the Display JPanel
 
 package generator;
 
@@ -34,5 +35,32 @@ public class Fractal {
         displayHeight = height;
         // for squarization of the window if rectangle::
         minUnit = 1/Math.min(width, height);
+    }
+
+    public enum PlotMethod{DEFAULT, PROBABILISTIC_1, PROBABILISTIC_2}
+    public PlotMethod fractalPlotMethod = PlotMethod.DEFAULT;
+
+    public void plot(Display d) {
+        if (fractalPlotMethod == PlotMethod.PROBABILISTIC_1) {
+            plotProbabilisticType1(d);
+        }
+        else if (fractalPlotMethod == PlotMethod.PROBABILISTIC_2) {
+            plotProbabilisticType2(d);
+        }
+        else {
+            plotDefault(d);
+        }
+    }
+
+    public void plotDefault(Display d) {
+
+    }
+    
+    public void plotProbabilisticType1(Display d) {
+
+    }
+
+    public void plotProbabilisticType2(Display d) {
+
     }
 }
