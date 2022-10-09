@@ -17,12 +17,12 @@ public class Fractal {
     public double x = -1.50;
     public double y = -1.50;
 
-    // zoom in amount
-    public double zoom = 1/5;
+    // zoom amount
+    public double zoomOutAmount = 3;
 
     public int displayWidth;
     public int displayHeight;
-    public double minUnit;
+    public int xyScaleMatchFactor;
 
     // how fast a point in question destabilizes...
     public static int destabilizingTime;
@@ -34,8 +34,7 @@ public class Fractal {
         // e.g. 1000 * 1000
         displayWidth = width;
         displayHeight = height;
-        // for squarization of the window if rectangle::
-        minUnit = 1/Math.min(width, height);
+        xyScaleMatchFactor = Math.min(displayWidth, displayHeight);
     }
 
     public enum PlotMethod{DEFAULT, PROBABILISTIC_1, PROBABILISTIC_2}
@@ -56,15 +55,17 @@ public class Fractal {
     public void plotDefault(Display d) {
         for (int i=0; i<displayWidth; i++) {
             for (int j=0; j<displayHeight; j++) {
-                double dx = (i*minUnit)/zoom;
-                double dy = (j*minUnit)/zoom;
+                double dx = zoomOutAmount * i / xyScaleMatchFactor;
+                double dy = zoomOutAmount * j / xyScaleMatchFactor;
+                //Complex complexInput = new Complex(x+dx, y+dy);
                 destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
                 //System.out.println("destablizingTime:: " + destabilizingTime);
                 // if within n precision/steps, the point destablized
+                d.updateDisplay(i, j, new Color(100, 100, 100));
                 if (destabilizingTime < n) {
                     // update the display with the plot
-                    System.out.println("wassss hereeee testing");
-                    d.updateDisplay(i, j, new Color(0, 0, 200));
+                    //System.out.println("wassss hereeee testing");
+                    d.updateDisplay(i, j, new Color(0, 0, 0));
                 }
             }
         }
@@ -74,6 +75,10 @@ public class Fractal {
     // maybe cuz z is being passed in by value i think...
     // need to create a reference to it...
     public int destabilizationTestDefault(Complex z, Complex toAdd, int n) {
+        //System.out.println(z.print());
+        //System.out.println(toAdd.print());
+        //System.out.println(minUnit);
+        //System.out.println(zoomOut);
         int count = 0;
         // if (z.real*z.real + z.imaginary*z.imaginary > 4) {
         //     // if already destabilized, immediate report zero
@@ -83,10 +88,10 @@ public class Fractal {
             z.toThePowerOfInteger(2);
             z.add(toAdd);
             count += 1;
-            System.out.println(z.print());
+            //System.out.println(z.print());
             if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
-                System.out.println("testing:: was here!!!!!!!!!!!!!!!!!");
-                // if already destabilized, immediate report zero
+                //System.out.println("testing:: was here!!!!!!!!!!!!!!!!!");
+                // if already destabilized, exit loop and report count
                 break;
             }
         }
