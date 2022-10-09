@@ -5,8 +5,6 @@
 package generator;
 
 import java.lang.Math;
-import java.util.Random;
-import java.awt.Color;
 
 public class Fractal {
     
@@ -30,6 +28,9 @@ public class Fractal {
     // precision for complex field data points
     public int n = 100;
     public int SAMPLE_SIZE = 1000000;
+
+    // adjust for exploration and experimentation::
+    public int exponent = 2;
 
     public void setDisplaySize(int width, int height) {
         // e.g. 1000 * 1000
@@ -90,7 +91,7 @@ public class Fractal {
         //     return n;
         // }
         while (count < n) {
-            z.toThePowerOfInteger(2);
+            z.toThePowerOfInteger(exponent);
             z.add(toAdd);
             count += 1;
             //System.out.println(z.print());
@@ -118,7 +119,7 @@ public class Fractal {
     public int destabilizationTestPr1(Complex z, Complex toAdd, int n) {
         int count = 0;
         while (count < n) {
-            int prExp = (int) Math.round(2 + Math.random());
+            int prExp = (int) Math.round(exponent + Math.random());
             //Complex prAdd = new Complex(Math.random(), Math.random());
             z.toThePowerOfInteger(prExp);
             //toAdd.add(prAdd);
@@ -146,7 +147,7 @@ public class Fractal {
     public int destabilizationTestPr2(Complex z, Complex toAdd, int n) {
         int count = 0;
         while (count < n) {
-            int prExp = (int) Math.round(2 - Math.random());
+            int prExp = (int) Math.round(exponent - Math.random());
             //Complex prAdd = new Complex(Math.random(), Math.random());
             z.toThePowerOfInteger(prExp);
             //toAdd.add(prAdd);

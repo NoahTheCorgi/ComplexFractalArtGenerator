@@ -3,7 +3,6 @@ package generator;
 // ... as well as a few drawing functionalities probabily...
 
 // probabily will be needing all of this (may not java.io.*)
-import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;

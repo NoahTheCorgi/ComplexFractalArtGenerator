@@ -1,7 +1,6 @@
 package generator;
 
 import java.awt.*;
-import java.lang.System;
 
 public class ColorsTheme {
     

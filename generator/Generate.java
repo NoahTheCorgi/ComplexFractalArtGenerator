@@ -6,7 +6,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import java.io.IOException;
-import java.io.*; // for user interaction through terminal
 
 public class Generate extends JFrame {
 
