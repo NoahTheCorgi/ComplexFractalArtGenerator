@@ -1,6 +1,6 @@
 // NoahTheCorgi
 // JFrame extension that will be compiled to executable
-
+package generator;
 import java.awt.*;
 import javax.swing.*;
 import java.io.IOException;
