@@ -4,6 +4,7 @@ package generator;
 
 // probabily will be needing all of this (may not java.io.*)
 import java.io.*;
+import java.util.concurrent.ConcurrentHashMap.KeySetView;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -11,14 +12,64 @@ import java.awt.image.Raster;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 
-public class Display extends JPanel {// implements KeyListener {
+public class Display extends JPanel implements KeyListener {
 
     public Fractal fractal;
     protected byte[] displayByteData;
+    protected boolean shiftKeyPressed = false;
 
-    // public Display() {
-    //     //addKeyListener(this);
-    // }
+    public Display() {
+        addKeyListener(this);
+    }
+
+    // apparently must override this...
+    @Override
+    public void keyTyped(KeyEvent e) {
+        System.out.println("key of code: " + e.getKeyCode() + " was typed...");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        System.out.println("the key code, " + keyCode + ", was Pressed...");
+        // shift
+        if (keyCode == 16) {
+            shiftKeyPressed = true;
+        }
+        // key O ("Oh") // This is Default
+        else if (keyCode == 79) {
+            fractal.fractalPlotMethod = Fractal.PlotMethod.DEFAULT;
+        }
+        // key P
+        else if (keyCode == 80) {
+            if (fractal.fractalPlotMethod == Fractal.PlotMethod.PROBABILISTIC_1) {
+                fractal.fractalPlotMethod = Fractal.PlotMethod.PROBABILISTIC_2;
+            }
+            else {
+                fractal.fractalPlotMethod = Fractal.PlotMethod.PROBABILISTIC_1;
+            }
+        }
+        // key R
+        else if (keyCode == 82) {
+            // Randomization of the colors used
+            // placeholder
+        }
+        // other basic exploration functionalities::
+        else {
+            explorationKeyPressed(e);
+        }
+    }
+
+    public void explorationKeyPressed(KeyEvent e) {
+        // placeholder
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == 16) {
+            shiftKeyPressed = false;
+        }
+    }
 
     // this updates the displayByteData array to be used by paintComponent
     // color is just black and white for now...
