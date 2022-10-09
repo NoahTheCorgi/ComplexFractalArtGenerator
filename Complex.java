@@ -69,6 +69,23 @@ public class Complex {
     }
 
     public double findThetaRadians() {
+        // first quad
+        if (real>=0 && imaginary>=0) {
+
+        }
+        // second quad
+        else if (real<0 && imaginary>=0) {
+
+        }
+        // third quad
+        else if (real<=0 && imaginary<=0) {
+
+        }
+        // fourth quad
+        else if (real>=0 && imaginary>=0) {
+
+        }
+        // this should never be reached...
         return 0.0;
     }
 }
