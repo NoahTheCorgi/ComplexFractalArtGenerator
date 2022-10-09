@@ -34,6 +34,15 @@ public class Display extends JPanel implements KeyListener {
         if (keyCode == 16) {
             shiftKeyPressed = true;
         }
+        // // key I
+        // else if (keyCode == 73) {
+        //     if (fractal.fractalPlotMethod == Fractal.PlotMethod.IMAGINARY_EXPONENT) {
+        //         fractal.fractalPlotMethod = Fractal.PlotMethod.IMAGINARY_EXPONENT_PROBABILISTIC;
+        //     }
+        //     else {
+        //         fractal.fractalPlotMethod = Fractal.PlotMethod.IMAGINARY_EXPONENT;
+        //     }
+        // }
         // key O ("Oh") // This is Default
         else if (keyCode == 79) {
             fractal.fractalPlotMethod = Fractal.PlotMethod.DEFAULT;
@@ -61,7 +70,7 @@ public class Display extends JPanel implements KeyListener {
 
     public void explorationKeyPressed(KeyEvent e) {
         if (shiftKeyPressed == true) {
-
+            // placeholder
         }
         // if shift key is not pressed...
         else {

@@ -2,6 +2,12 @@
 // Fractal Object that represents the fractal to be displayed
 // ... also containing methods to update the Display JPanel
 
+// future task 1:: experiment and explore the possibility of complex/imaginary exponents
+// (the complex exponent function was individually tested, and there was no issue, 
+// ... but the time complexity does not allow an efficient computation at the moment...)
+// future task 2:: create flexibility or dynamically adjusting or even fixing toAdd value
+// future task 3:: terminal based user input update capability
+
 package generator;
 
 import java.lang.Math;
@@ -31,6 +37,7 @@ public class Fractal {
 
     // adjust for exploration and experimentation::
     public int exponent = 2;
+    // public Complex imaginaryExponent = new Complex(0, 1);
 
     public void setDisplaySize(int width, int height) {
         // e.g. 1000 * 1000
@@ -39,7 +46,7 @@ public class Fractal {
         xyScaleMatchFactor = Math.min(displayWidth, displayHeight);
     }
 
-    public enum PlotMethod{DEFAULT, PROBABILISTIC_1, PROBABILISTIC_2}
+    public enum PlotMethod{DEFAULT, PROBABILISTIC_1, PROBABILISTIC_2, IMAGINARY_EXPONENT, IMAGINARY_EXPONENT_PROBABILISTIC}
     public PlotMethod fractalPlotMethod = PlotMethod.DEFAULT;
 
     public void plot(Display d) {
@@ -49,6 +56,12 @@ public class Fractal {
         else if (fractalPlotMethod == PlotMethod.PROBABILISTIC_2) {
             plotProbabilisticType2(d);
         }
+        // else if (fractalPlotMethod == PlotMethod.IMAGINARY_EXPONENT) {
+        //     plotImaginaryExponent(d);
+        // }
+        // else if (fractalPlotMethod == PlotMethod.IMAGINARY_EXPONENT_PROBABILISTIC) {
+        //     plotImaginaryExponentProbabilistic(d);
+        // }
         else {
             plotDefault(d);
         }
@@ -159,4 +172,60 @@ public class Fractal {
         }
         return count;
     }
+
+    // // not viable to use yet...
+    // public void plotImaginaryExponent(Display d) {
+    //     for (int i=0; i<displayWidth; i++) {
+    //         for (int j=0; j<displayHeight; j++) {
+    //             double dx = zoomOutAmount * i / xyScaleMatchFactor;
+    //             double dy = zoomOutAmount * j / xyScaleMatchFactor;
+    //             destabilizingTime = destabilizationTestImaginaryExponent(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+    //             if (destabilizingTime < n) {
+    //                 d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
+    //             }
+    //         }
+    //     }
+    // }
+    // public int destabilizationTestImaginaryExponent(Complex z, Complex toAdd, int n) {
+    //     int count = 0;
+    //     while (count < n) {
+    //         // this is where the bug is ...
+    //         z.toThePowerOf(imaginaryExponent);
+    //         //z.toThePowerOfInteger(exponent + 1);
+    //         z.add(toAdd);
+    //         count += 1;
+    //         if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
+    //             break;
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // // not viable to use yet...
+    // public void plotImaginaryExponentProbabilistic(Display d) {
+    //     for (int i=0; i<displayWidth; i++) {
+    //         for (int j=0; j<displayHeight; j++) {
+    //             double dx = zoomOutAmount * i / xyScaleMatchFactor;
+    //             double dy = zoomOutAmount * j / xyScaleMatchFactor;
+    //             destabilizingTime = destabilizationTestImaginaryExponentProbabilistic(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+    //             if (destabilizingTime < n) {
+    //                 d.updateDisplay(i, j, ColorsTheme.setColorsTheme(n, destabilizingTime));
+    //             }
+    //         }
+    //     }
+    // }
+    // public int destabilizationTestImaginaryExponentProbabilistic(Complex z, Complex toAdd, int n) {
+    //     int count = 0;
+    //     while (count < n) {
+    //         // this is where the bug is...
+    //         // z.toThePowerOf(imaginaryExponent);
+    //         z.toThePowerOfInteger(exponent + 1);
+    //         z.add(toAdd);
+    //         count += 1;
+    //         if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
+    //             break;
+    //         }
+    //     }
+    //     return count;
+    // }
 }
