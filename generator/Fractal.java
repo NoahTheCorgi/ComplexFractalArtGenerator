@@ -29,6 +29,7 @@ public class Fractal {
 
     // precision for complex field data points
     public int n = 100;
+    public int SAMPLE_SIZE = 1000000;
 
     public void setDisplaySize(int width, int height) {
         // e.g. 1000 * 1000
@@ -64,16 +65,14 @@ public class Fractal {
                 destabilizingTime = destabilizationTestDefault(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
                 //System.out.println("destablizingTime:: " + destabilizingTime);
                 // if within n precision/steps, the point destablized
-                d.updateDisplay(i, j, new Color(100, 100, 100));
+                //d.updateDisplay(i, j, new Color(100, 100, 100));
                 if (destabilizingTime < n) {
                     // update the display with the plot
-                    //System.out.println("wassss hereeee testing");
-                    d.updateDisplay(i, j, new Color(0, 0, 0));
+                    d.updateDisplay(i, j, new Color(100, 100, 100));
                 }
             }
         }
     }
-
     // there is a huge bug here...
     // maybe cuz z is being passed in by value i think...
     // need to create a reference to it...
@@ -93,7 +92,6 @@ public class Fractal {
             count += 1;
             //System.out.println(z.print());
             if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
-                //System.out.println("testing:: was here!!!!!!!!!!!!!!!!!");
                 // if already destabilized, exit loop and report count
                 break;
             }
@@ -102,10 +100,59 @@ public class Fractal {
     }
 
     public void plotProbabilisticType1(Display d) {
-
+        for (int i=0; i<displayWidth; i++) {
+            for (int j=0; j<displayHeight; j++) {
+                double dx = zoomOutAmount * i / xyScaleMatchFactor;
+                double dy = zoomOutAmount * j / xyScaleMatchFactor;
+                destabilizingTime = destabilizationTestPr1(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                if (destabilizingTime < n) {
+                    d.updateDisplay(i, j, new Color(100, 100, 100));
+                }
+            }
+        }
+        //}
+    }
+    public int destabilizationTestPr1(Complex z, Complex toAdd, int n) {
+        int count = 0;
+        while (count < n) {
+            int prExp = (int) Math.round(2 + Math.random());
+            //Complex prAdd = new Complex(Math.random(), Math.random());
+            z.toThePowerOfInteger(prExp);
+            //toAdd.add(prAdd);
+            z.add(toAdd);
+            count += 1;
+            if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
+                break;
+            }
+        }
+        return count;
     }
 
     public void plotProbabilisticType2(Display d) {
-
+        for (int i=0; i<displayWidth; i++) {
+            for (int j=0; j<displayHeight; j++) {
+                double dx = zoomOutAmount * i / xyScaleMatchFactor;
+                double dy = zoomOutAmount * j / xyScaleMatchFactor;
+                destabilizingTime = destabilizationTestPr2(new Complex(x+dx, y+dy), new Complex(x+dx, y+dy), n);
+                if (destabilizingTime < n) {
+                    d.updateDisplay(i, j, new Color(100, 100, 100));
+                }
+            }
+        }
+    }
+    public int destabilizationTestPr2(Complex z, Complex toAdd, int n) {
+        int count = 0;
+        while (count < n) {
+            int prExp = (int) Math.round(2 - Math.random());
+            //Complex prAdd = new Complex(Math.random(), Math.random());
+            z.toThePowerOfInteger(prExp);
+            //toAdd.add(prAdd);
+            z.add(toAdd);
+            count += 1;
+            if ((z.real * z.real) + (z.imaginary * z.imaginary) > 4) {
+                break;
+            }
+        }
+        return count;
     }
 }
