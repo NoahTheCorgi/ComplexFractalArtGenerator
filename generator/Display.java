@@ -45,6 +45,6 @@ public class Display extends JPanel {// implements KeyListener {
         fractal.plot(this); // note: updateDisplay is called here by fractal
         // now that the array is updated...
         BufferedImage outputImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_3BYTE_BGR);
-        
+        // need a few more components to drawImage for graphics...
     }
 }
