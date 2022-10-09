@@ -6,6 +6,7 @@ package generator;
 
 import java.lang.Math;
 import java.util.Random;
+import java.awt.Color;
 
 public class Fractal {
     
@@ -61,6 +62,7 @@ public class Fractal {
                 // if within n precision/steps, the point destablized
                 if (destabilizingTime < n) {
                     // update the display with the plot
+                    d.updateDisplay(i, j, new Color(0,0,0));
                 }
             }
         }
