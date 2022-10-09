@@ -1,6 +1,8 @@
 // NoahTheCorgi
 // discrete modeling of complex field and its arithmetics::
 
+package generator;
+
 public class Complex {
 
     // real and imaginary parts of a complex number

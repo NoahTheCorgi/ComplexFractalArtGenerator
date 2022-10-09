@@ -1,7 +1,8 @@
+package generator;
 // adding functionality to JPanel as KeyListner
 // ... as well as a few drawing functionalities probabily...
 
-package generator;
+
 
 // probabily will be needing all of this (may not java.io.*)
 import java.io.*;
