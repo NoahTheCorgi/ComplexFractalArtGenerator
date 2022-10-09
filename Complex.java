@@ -59,6 +59,16 @@ public class Complex {
 
     // Generalized operator for computing complex exponents::
     public void toThePowerOf(Complex z) {
-        // placeholder
+        // (a + bi)^(c + di)
+        double r = Math.sqrt((double) (real*real + imaginary*imaginary));
+        double theta = findThetaRadians();
+        double newRadius = Math.exp(Math.log(r) - (theta*z.imaginary));
+        double alpha = (z.real * theta) + (z.imaginary * Math.log(r));
+        real = newRadius * Math.cos(alpha);
+        imaginary = newRadius * Math.sin(alpha);
+    }
+
+    public double findThetaRadians() {
+        return 0.0;
     }
 }
