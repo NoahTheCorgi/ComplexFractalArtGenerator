@@ -37,7 +37,7 @@ public class Fractal {
     // adjust for exploration and experimentation::
     public int exponent = 2;
     public boolean toAddOption = false;
-    public Complex toAddValue = new Complex(0.5, 0.5);
+    public Complex toAddValue = new Complex(0.285, 0.01);
     // public Complex imaginaryExponent = new Complex(0, 1);
 
     public void setDisplaySize(int width, int height) {
