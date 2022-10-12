@@ -112,6 +112,12 @@ public class Display extends JPanel implements KeyListener {
             }
             else {
                 fractal.zoomOutAmount *= 0.99;
+                // fractal.x += (newcenterX - oldcenterX) * fractal.zoomOutAmount / getWidth();
+                // fractal.y += (newcenterY - oldcenterY) * fractal.zoomOutAmount / getHeight();
+                // fractal.x += ((newcenterX - oldcenterX) * fractal.zoomOutAmount * fractal.zoomOutAmount) / getWidth();
+                // fractal.y += ((newcenterY - oldcenterY) * fractal.zoomOutAmount * fractal.zoomOutAmount) / getHeight();
+                fractal.x += ((fractal.zoomOutAmount * getWidth() * 0.01) / 2) / getWidth();
+                fractal.y += ((fractal.zoomOutAmount * getHeight() * 0.01) / 2) / getHeight();
             }
         }
         // down arrow key:: zoom out or decrease precision Fractal.n
@@ -124,7 +130,17 @@ public class Display extends JPanel implements KeyListener {
                 }
             }
             else {
+                int oldcenterX = (int) ((getWidth() / fractal.zoomOutAmount)) / 2;
+                int oldcenterY = (int) ((getHeight() / fractal.zoomOutAmount)) / 2;
                 fractal.zoomOutAmount *= 1.01;
+                int newcenterX = (int) ((getWidth() / fractal.zoomOutAmount)) / 2;
+                int newcenterY = (int) ((getHeight() / fractal.zoomOutAmount)) / 2;
+                // fractal.x += (newcenterX - oldcenterX) * fractal.zoomOutAmount / getWidth();
+                // fractal.y += (newcenterY - oldcenterY) * fractal.zoomOutAmount / getHeight();
+                // fractal.x += ((newcenterX - oldcenterX) * fractal.zoomOutAmount * fractal.zoomOutAmount) / getWidth();
+                // fractal.y += ((newcenterY - oldcenterY) * fractal.zoomOutAmount * fractal.zoomOutAmount) / getHeight();
+                fractal.x -= ((fractal.zoomOutAmount * getWidth() * 0.01) / 2) / getWidth();
+                fractal.y -= ((fractal.zoomOutAmount * getHeight() * 0.01) / 2) / getHeight();
             }
         }
     }

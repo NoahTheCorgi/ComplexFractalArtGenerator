@@ -24,6 +24,7 @@ public class Generate extends JFrame {
     }
 
     // start the animated display::
+    // (Future Task:: terminal interaction capability to come...)
     public static void main(String[] args) throws IOException {
         Generate generate = new Generate();
         ColorsTheme.generateColorsTheme();
