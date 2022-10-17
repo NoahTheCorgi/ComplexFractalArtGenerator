@@ -38,7 +38,7 @@ public class Fractal {
     public int exponent = 2;
     public boolean toAddOption = false;
     // parameters that define the Julia Set /- similar type art,,,
-    public Complex toAddValue = new Complex(0.285, 0.01);
+    public Complex toAddValue; // = new Complex(0.285, 0.01);
     // public Complex imaginaryExponent = new Complex(0, 1);
 
     public void setDisplaySize(int width, int height) {
