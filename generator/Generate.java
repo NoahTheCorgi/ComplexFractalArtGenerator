@@ -9,6 +9,8 @@ import java.io.IOException;
 
 public class Generate extends JFrame {
 
+    public static Display display;
+
     // constructor creates instance of Generate, initializing the main window::
     public Generate() {
         setVisible(true);
@@ -17,10 +19,10 @@ public class Generate extends JFrame {
         setTitle("Complex Fractal Art Generator");
         // need to add a type of JPanel ...
         // Display class extends JPanel
-        Display display = new Display();
+        display = new Display();
         display.fractal = new Fractal();
         // make this a initial user input variable::
-        display.fractal.toAddValue = new Complex(0.285, 0.02);
+        display.fractal.toAddValue = new Complex(0.285, 0.01);
         add(display);
         display.requestFocusInWindow();
     }
@@ -38,7 +40,7 @@ public class Generate extends JFrame {
         }
         if (args.length == 2) {
             System.out.println("Custom toAddValue parameter mode has been activated...");
-            // future task...
+            display.fractal.toAddValue = new Complex(Double.parseDouble(args[0]), Double.parseDouble(args[1]));
         }
         while (true) {
             generate.repaint();
