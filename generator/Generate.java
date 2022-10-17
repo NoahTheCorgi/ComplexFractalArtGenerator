@@ -19,6 +19,8 @@ public class Generate extends JFrame {
         // Display class extends JPanel
         Display display = new Display();
         display.fractal = new Fractal();
+        // make this a initial user input variable::
+        display.fractal.toAddValue = new Complex(0.285, 0.02);
         add(display);
         display.requestFocusInWindow();
     }
@@ -28,8 +30,15 @@ public class Generate extends JFrame {
     public static void main(String[] args) throws IOException {
         Generate generate = new Generate();
         ColorsTheme.generateColorsTheme();
-        for (int i=0; i<ColorsTheme.COLOR_DETAIL_SIZE; i++) {
-            System.out.println(ColorsTheme.THEME_COLORS[i]);
+        // for (int i=0; i<ColorsTheme.COLOR_DETAIL_SIZE; i++) {
+        //     System.out.println(ColorsTheme.THEME_COLORS[i]);
+        // }
+        if (args.length == 1) {
+            System.out.println("Only 1 out of 2 necessary arguments were provided for the toAddValue parameter...");
+        }
+        if (args.length == 2) {
+            System.out.println("Custom toAddValue parameter mode has been activated...");
+            // future task...
         }
         while (true) {
             generate.repaint();

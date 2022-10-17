@@ -21,6 +21,7 @@ public class ColorsTheme {
         }
     }
 
+    // create gradient theme using the randomly generated colors...
     public static Color setColorsTheme(int n, int stabilizingTime) {
         float destabilizeLevel = (float) (n-stabilizingTime)/n;
         for (int i=0; i<COLOR_DETAIL_SIZE; i++) {
