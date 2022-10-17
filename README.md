@@ -6,10 +6,16 @@
 - The art aspect of things will be emphasized more than the theoretical sanity checks.
 
 In order to create a generator executable from the ComplexFractalArtGenerator directory
-, please use the command: javac generate/Generate.java
+, please use the command: javac generator/Generate.java
 
 To run the generator after compiling
-, please use the command : java generate/Generate
+, please use the command : java generator/Generate
+
+For custom Julia Set mode where the toAddValue parameter is customized
+, please use the same command with two double values following it separated by a space:
+java generator/Generate 0.285 0.01
+(Tip: Pressing T key will reveal the custom Julia Set mode...)
+(Tip: The results of the custom Julia Set mode is quite sensitive to change in parameters.)
 
 Key Commands for exploration:
 - WASD keys: move camera
