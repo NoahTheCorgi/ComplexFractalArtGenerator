@@ -24,6 +24,7 @@ public class Display extends JPanel implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         System.out.println("key of code: " + e.getKeyCode() + " was typed...");
+        repaint();
     }
 
     @Override
@@ -75,6 +76,7 @@ public class Display extends JPanel implements KeyListener {
         else {
             explorationKeyPressed(e);
         }
+        repaint();
     }
 
     public void explorationKeyPressed(KeyEvent e) {
@@ -143,6 +145,7 @@ public class Display extends JPanel implements KeyListener {
                 fractal.y -= ((fractal.zoomOutAmount * getHeight() * 0.01) / 2) / getHeight();
             }
         }
+        repaint();
     }
 
     @Override
@@ -151,6 +154,7 @@ public class Display extends JPanel implements KeyListener {
         if (e.getKeyCode() == 78) {
             nKeyPressed = false;
         }
+        repaint();
     }
 
     // this updates the displayByteData array to be used by paintComponent

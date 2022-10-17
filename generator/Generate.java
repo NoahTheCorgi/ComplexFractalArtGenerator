@@ -42,8 +42,11 @@ public class Generate extends JFrame {
             System.out.println("Custom toAddValue parameter mode has been activated...");
             display.fractal.toAddValue = new Complex(Double.parseDouble(args[0]), Double.parseDouble(args[1]));
         }
-        while (true) {
-            generate.repaint();
-        }
+        // Note: this commented out option creates great animation art
+        // ... for the probabilistic options ... but uses a lot of cpu ...
+        // while (true) {
+        //     generate.repaint();
+        // }
+        generate.repaint();
     }
 }
