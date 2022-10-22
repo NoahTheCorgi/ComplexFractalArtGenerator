@@ -33,14 +33,20 @@ public class Fractal {
     // precision for complex field data points
     public int n = 100;
     public int SAMPLE_SIZE = 1000000;
-
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    // *** task: adjustable parameters with adjustable precision, using keys *** ///
+    ////////////////////////////////////////////////////////////////////////////////
     // adjust for exploration and experimentation::
     public int exponent = 2;
     public boolean toAddOption = false;
     // parameters that define the Julia Set /- similar type art,,,
     public Complex toAddValue; // = new Complex(0.285, 0.01);
     // public Complex imaginaryExponent = new Complex(0, 1);
-
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    
     public void setDisplaySize(int width, int height) {
         // e.g. 1000 * 1000
         displayWidth = width;
