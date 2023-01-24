@@ -1,8 +1,17 @@
 # ComplexFractalArtGenerator
+
 # Extending classic Mandelbrot approach to create unlimited varied results
+
 # Goal is the create various kinds of Fractal Art, Probabilistic/Non-Probabilistic
+
+![1](./images/1.png)
+![2](./images/2.png)
+![3](./images/3.png)
+![4](./images/4.png)
+![5](./images/5.png)
+
 - I also plan to add the option to Probabilistic methods to create interesting art
-- Personal project of re-writing but also improving a very old project with much more optimization, power, and functionality. 
+- Personal project of re-writing but also improving a very old project with much more optimization, power, and functionality.
 - The art aspect of things will be emphasized more than the theoretical sanity checks.
 
 In order to create a generator executable from the ComplexFractalArtGenerator directory
@@ -18,6 +27,7 @@ java generator/Generate 0.285 0.01
 (Tip: The results of the custom Julia Set mode is quite sensitive to change in parameters.)
 
 Key Commands for exploration:
+
 - WASD keys: move camera
 - R key: randomize color theme
 - O key: Ordinary/Default non-probabilistic art
@@ -27,4 +37,4 @@ Key Commands for exploration:
 - N key + Up arrow key: increase depth precision
 - N key + Down arrow key: decrease depth precision
 - T key: Toggle betwen Fractal.toAddOption applied or not applied
-(toAddOption fixes the added component Fractal.toAddValue to the Mandelbrot Set function)
+  (toAddOption fixes the added component Fractal.toAddValue to the Mandelbrot Set function)
